@@ -22,6 +22,20 @@ local PANEL = {
     end,
     AddTests = function(self,entity,test)
         local pane = self
+        local button = vgui.Create("DButton",self)
+        local x,y = self:GetSize()
+        button:SetText("Drop Item")
+        button:SetSize(60,30)
+        button:SetPos(10,10)
+        button.DoClick = function()
+            self:SetVisible(false)
+            net.Start("tfc_drop")
+            net.WriteEntity(entity)
+            net.SendToServer()
+        end
+        button.Paint = function(self,w,h)
+            draw.RoundedBox(20,0,0,w,h, Color(120,133,157,250))
+        end
         local rest = vgui.Create("DPanel",self)
         rest:Dock(FILL)
         rest:DockMargin(20,50,20,0)
@@ -52,9 +66,6 @@ local PANEL = {
                 net.Start("tfc_test")
                 net.WriteEntity(entity)
                 net.WriteString(k)
-                local pid = LocalPlayer():UserID()
-                print(pid)
-                net.WriteInt(pid,9)
                 net.SendToServer()
                 pane:SetVisible(false)
             end

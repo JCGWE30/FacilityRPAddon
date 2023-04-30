@@ -10,7 +10,7 @@ function ENT:Draw()
         draw.RoundedBox(30,-500,0,bar,150,Color(0,255,0))
         draw.SimpleText("Crafting "..math.floor(percent).."%","Hovertext",0,30,Color(0,0,0),TEXT_ALIGN_CENTER,TEXT_ALIGN_TOP)
     else
-        draw.RoundedBox(30,-500,0,1000,150,Color(255,255,255))
+        draw.RoundedBox(30,-500,0,1000,150,Color(94,94,94))
         draw.SimpleText("No Recipe Selected","Hovertext",0,30,Color(0,0,0),TEXT_ALIGN_CENTER,TEXT_ALIGN_TOP)
     end
     cam.End3D2D()
