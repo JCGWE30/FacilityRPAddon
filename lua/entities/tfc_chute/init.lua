@@ -32,5 +32,6 @@ function ENT:Touch(ent)
         print("Configuring")
         resourcecount[ent:GetClass()] = resourcecount[ent:GetClass()] + 1
     end
+    utilfunctions.saveAll()
     ent:Remove()
 end

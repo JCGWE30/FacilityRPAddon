@@ -58,12 +58,13 @@ function ENT:Think()
         if self:GetStarttime()+tests[self:GetTesttype()]["duration"] <= CurTime() then
             print(preformedtests[self:GetTesttype()])
             preformedtests[self:GetTesttype()][self:GetSubject()] = true
+            utilfunctions.saveAll()
             net.Start("tfc_research")
             net.WriteBool(tests[self:GetTesttype()]["unlocks"][self:GetSubject()] ~= nil and unlocks[tests[self:GetTesttype()]["unlocks"][self:GetSubject()]] ~= true)
             net.Send(Player(self:GetResearcher()))
             if tests[self:GetTesttype()]["unlocks"][self:GetSubject()] ~= nil then
                 print("unlock")
-                unlocks[tests[self:GetTesttype()]["unlocks"][self:GetSubject()]] = true
+                //unlocks[tests[self:GetTesttype()]["unlocks"][self:GetSubject()]] = true
             end
             self:SetTesttype(0)
             self:SetInuse(false)

@@ -1,10 +1,9 @@
 resourcecount = {}
 modelreference = {}
-playerpackages = {}
-playerinventoryspace = {}
-//Didint use JSON storage to save time
 preformedtests = {}
 unlocks = {}
+
+playerpackages = {}
 blacklist = {
     "player",
     "tfc_crafter",

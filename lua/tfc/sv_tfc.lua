@@ -1,3 +1,4 @@
+utilfunctions = {}
 util.AddNetworkString("tfc_openlocker")
 util.AddNetworkString("tfc_takepackage")
 util.AddNetworkString("tfc_fullinven")
@@ -15,6 +16,7 @@ net.Receive("tfc_takepackage", function(len,ply)
         ply:PickupWeapon(wep)
         playerpackages[ply:SteamID()] = ent
         resourcecount[ent] = resourcecount[ent] - 1
+        utilfunctions.saveAll()
     end
 end)
 net.Receive("tfc_test", function(len,ply)
@@ -46,3 +48,13 @@ net.Receive("tfc_drop", function(len,ply)
     playerpackages[ply:SteamID()] = ent:GetSubject()
     ent:SetSubject("")
 end)
+
+utilfunctions.saveAll = function()
+    local combined = {}
+    combined.resource = resourcecount
+    combined.models = modelreference
+    combined.preformed = preformedtests
+    combined.unlocked = unlocks
+    local converted = util.TableToJSON(combined)
+    file.Write("tfc_info.json",converted)
+end

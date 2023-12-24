@@ -33,10 +33,10 @@ end)
 net.Receive("tfc_research", function()
     local succeed = net.ReadBool()
     if(succeed) then
-        notification.AddLegacy("You have discovered something from the test! New tech unlocked", NOTIFY_GENERIC, 2)
+        notification.AddLegacy("The effects of this test were noteworthy", NOTIFY_GENERIC, 2)
         surface.PlaySound( "buttons/button9.wav")
     else
-        notification.AddLegacy("The test failed", NOTIFY_ERROR, 2)
+        notification.AddLegacy("Nothing happened", NOTIFY_ERROR, 2)
         surface.PlaySound( "buttons/button10.wav")
     end
 end)

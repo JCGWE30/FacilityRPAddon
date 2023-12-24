@@ -13,5 +13,14 @@ if SERVER then
     AddCSLuaFile("vgui/lockermenu.lua")
     AddCSLuaFile("vgui/testingmenu.lua")
     AddCSLuaFile("vgui/craftingmenu.lua")
+
+    local jsondata = file.Read("tfc_info.json")
+
+    local converted = util.JSONToTable(jsondata)
+
+    resourcecount = converted.resource
+    modelreference = converted.models
+    preformedtests = converted.preformed
+    unlocks = converted.unlocked
 end
 print("Autorun Init")
